@@ -1,0 +1,119 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    background-color: rgb(245, 221, 169);
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    color: #f7f9f9;
+    background-color: #2081c3;
+    margin: 0;
+    padding: 20px 20px 20px 40px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: flex-start;
+    list-style-type: none;
+    box-shadow: 0 4px 4px -2px gray;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #f7f9f9;
+    margin: 10px 40px 10px 0;
+}
+
+h1 {
+    font-size: 5em;
+    color: rgb(128, 0, 32);
+}
+
+h3,
+h5 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    ;
+}
+
+.cook {
+    box-shadow: none;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.intro-link {
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+.intro-link a {
+    text-decoration: none;
+    color: black;
+}
+
+.read-more a {
+    text-decoration: none;
+    color: rgb(175, 1, 1);
+    font-size: 1.3em;
+}
+
+.intro img {
+    width: 250px
+}
+
+.title {
+    text-align: center;
+}
+
+.recipes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.recipe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2% 5%
+}
+
+.button {
+    background-color: rgb(170, 0, 0);
+    color: white;
+    width: 230px;
+    height: 40px;
+    font-size: 1em;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.button2 {
+    background-color: rgb(90, 1, 206);
+    color: white;
+    width: 230px;
+    height: 40px;
+    font-size: 1em;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 500px;
+    height: 20px;
+}

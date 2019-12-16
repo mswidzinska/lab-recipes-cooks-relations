@@ -1,0 +1,19 @@
+
+<h2><u>{{recipe.title}}</u></h2>
+<p><b>Level of difficulty: </b>{{recipe.level}}</p>
+<p><b>Ingredients: </b></p>
+{{#each recipe.ingredients}}
+    <ul>
+        <li>{{this}}</li>
+    </ul>
+{{/each}}
+<p><b>Cuisine: </b>{{recipe.cuisine}}</p>
+<p><b>Dish type: </b>{{recipe.dishType}}</p>
+<img src="{{recipe.image}}" alt="" style="width:300px">
+<p><b>Duration: </b>{{recipe.duration}}</p>
+<p><b>Creator: </b>{{recipe.creator.name}}<br><br>
+<img src="{{recipe.creator.image}}" alt="" style="width:150px"></p>
+<p><b>Created: </b>{{recipe.created}}</p>
+<form action='/recipes/{{recipe.id}}/delete' method='get'><input type='submit' value='Delete this recipe' class="button"></form>
+
+<form action='/edit/{{recipe.id}}' method='get'><input type='submit' value='Edit this recipe' class="button2"></form>

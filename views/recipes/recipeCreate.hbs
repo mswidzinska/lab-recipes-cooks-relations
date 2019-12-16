@@ -1,0 +1,28 @@
+
+<div class="recipe">
+<h1>Create a new recipe!</h1>
+<form action="/create" method="POST">
+    <input type="text" placeholder="Title of your recipe" name="title">
+    <p>Level:</p>
+        <select name='level'>
+            <option value='Easy Peasy' selected>Easy Peasy</option>
+            <option value='Amateur Chef'>Amateur Chef</option>
+            <option value='UltraPro Chef'>UltraPro Chef</option>
+        </select><br><br>
+    <input type="text" placeholder="Ingredients" name="ingredients" style="width:500px;"><br><br>
+    <input type="text" placeholder="Cuisine" name="cuisine">
+    <p>Dish type:</p>
+    <select name="dishType">
+            <option value='Breakfast'>Breakfast</option>
+            <option value='Dish' selected>Dish</option>
+            <option value='Snack'>Snack</option>
+            <option value='Drink'>Drink</option>
+            <option value='Dessert'>Dessert</option>
+            <option value='Other'>Other</option>
+        </select><br><br>
+    <input type="text" placeholder="image url" name="image"><br><br>
+    <input type="number" placeholder="Duration" name="duration"><br><br>
+    <input type="text" placeholder="Creator" name="creator"><br><br>
+    <input type="submit" class="button">
+</form>
+</div>

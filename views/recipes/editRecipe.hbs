@@ -1,0 +1,31 @@
+<div class="recipe">
+<h1>Edit this recipe</h1>
+<form action="/edit" method="POST">
+
+    <input type="text" value="{{recipe.title}}" name="title"><br>
+    <p>Level:</p>
+    <select type="text" value="{{recipe.level}}" name="level">
+            <option value='Easy Peasy' selected>Easy Peasy</option>
+            <option value='Amateur Chef'>Amateur Chef</option>
+            <option value='UltraPro Chef'>UltraPro Chef</option>
+    </select><br><br>
+    <input type="text" value="{{recipe.ingredients}}" name="ingredients"><br><br>
+    <input type="text" value="{{recipe.cuisine}}" name="cuisine"><br>
+    <p>Dish type:</p>
+    <select type="text" value="{{recipe.dishType}}" name="dishType">
+            <option value='Breakfast'>Breakfast</option>
+            <option value='Dish' selected>Dish</option>
+            <option value='Snack'>Snack</option>
+            <option value='Drink'>Drink</option>
+            <option value='Dessert'>Dessert</option>
+            <option value='Other'>Other</option>
+    </select><br><br>
+    <input type="text" value="{{recipe.image}}" name="image"><br><br>
+    <input type="number" value="{{recipe.duration}}" name="duration"><br><br>
+    <input type="text" value="{{recipe.creator}}" name="creator"><br><br>
+
+    <input type="hidden" value="{{recipe.id}}" name="id">
+    <input type="submit" class="button" >
+</form>
+
+</div>
