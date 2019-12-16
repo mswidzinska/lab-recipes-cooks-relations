@@ -22,7 +22,14 @@
     </select><br><br>
     <input type="text" value="{{recipe.image}}" name="image"><br><br>
     <input type="number" value="{{recipe.duration}}" name="duration"><br><br>
-    <input type="text" value="{{recipe.creator}}" name="creator"><br><br>
+
+    <p>Creator:</p>
+    <select name ="creator" id="">
+            {{#each creators}}
+            <option value='{{this._id}}'> {{this.name}}</option>
+            {{/each}}
+
+    </select>
 
     <input type="hidden" value="{{recipe.id}}" name="id">
     <input type="submit" class="button" >

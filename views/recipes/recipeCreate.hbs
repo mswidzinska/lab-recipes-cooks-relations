@@ -22,7 +22,16 @@
         </select><br><br>
     <input type="text" placeholder="image url" name="image"><br><br>
     <input type="number" placeholder="Duration" name="duration"><br><br>
-    <input type="text" placeholder="Creator" name="creator"><br><br>
+
+    <p>Creator:</p>
+    <select name ="creator" id="">
+            {{#each creators}}
+            <option value='{{this._id}}'> {{this.name}}</option>
+            {{/each}}
+
+    </select><br><br>
+
+
     <input type="submit" class="button">
 </form>
 </div>

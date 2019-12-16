@@ -1,10 +1,18 @@
 const express = require("express")
 const app = express()
 const Recipe = require("../models/recipe")
+const Creator = require("../models/cook")
+const mongoose = require("mongoose");
+
 
 app.get("/create", (req, res) => {
-    res.render("recipes/recipeCreate.hbs")
+    Creator.find({})
+        .then((creators) => {
+            res.render("recipes/recipeCreate.hbs", { creators })
+        })
+        .catch(err => console.log(err))
 })
+
 
 app.post("/create", (req, res) => {
     let newRecipe = {
@@ -15,13 +23,13 @@ app.post("/create", (req, res) => {
         dishType: req.body.dishType,
         image: req.body.image,
         duration: req.body.duration,
-        creator: req.body.creator,
+        creator: mongoose.Types.ObjectId(req.body.creator),
         created: req.body.created
     }
 
     Recipe.create(newRecipe)
-        .then(result => {
-            res.render("recipes/singleRecipe", { recipe: result })
+        .then(() => {
+            res.redirect('/')
         })
         .catch(err => console.log(err))
 })
