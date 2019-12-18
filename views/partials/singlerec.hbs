@@ -1,12 +1,14 @@
 
-<h2><u>{{recipe.title}}</u></h2>
+<h4>{{recipe.title}}</h4>
 <p><b>Level of difficulty: </b>{{recipe.level}}</p>
 <p><b>Ingredients: </b></p>
-{{#each recipe.ingredients}}
+
     <ul>
+        {{#each recipe.ingredients}}
         <li>{{this}}</li>
+        {{/each}}
     </ul>
-{{/each}}
+
 <p><b>Cuisine: </b>{{recipe.cuisine}}</p>
 <p><b>Dish type: </b>{{recipe.dishType}}</p>
 <img src="{{recipe.image}}" alt="" style="width:300px">

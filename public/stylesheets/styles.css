@@ -1,10 +1,13 @@
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
-    background-color: rgb(245, 221, 169);
+    background-color: rgba(245, 227, 190, 0.856);
     margin: 0;
     padding: 0;
 }
+
+
+/*Navigation*/
 
 .nav {
     color: #f7f9f9;
@@ -12,11 +15,16 @@ body {
     margin: 0;
     padding: 20px 20px 20px 40px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: row;
     align-content: flex-start;
     list-style-type: none;
     box-shadow: 0 4px 4px -2px gray;
+}
+
+.nav div {
+    display: flex;
+    flex-direction: row;
 }
 
 .nav-link {
@@ -24,6 +32,13 @@ body {
     color: #f7f9f9;
     margin: 10px 40px 10px 0;
 }
+
+.hallo {
+    margin-right: 40px;
+}
+
+
+/*End - Navigation*/
 
 h1 {
     font-size: 5em;
@@ -37,16 +52,25 @@ h2 {
     padding: 0;
 }
 
-h3,
+h3 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+h4 {
+    font-size: 2.5em;
+    color: #1F81C3;
+}
+
 h5 {
+    font-size: 1.1em;
     margin: 0;
     padding: 10px 0;
 }
 
 img {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
-    ;
+    border-radius: 15px;
 }
 
 .cook {
@@ -193,5 +217,5 @@ input {
 }
 
 .red {
-    color: red
+    color: rgb(202, 0, 0)
 }

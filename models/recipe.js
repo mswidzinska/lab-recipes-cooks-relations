@@ -5,7 +5,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 const recipeSchema = new Schema({
     title: String,
     level: String,
-    ingredients: Array,
+    ingredients: [Array],
     cuisine: { type: String, required: true },
     dishType: { type: String, enum: ['Breakfast', 'Dish', 'Snack', 'Drink', 'Dessert', 'Other'] },
     image: { type: String, default: 'https: //images.media-allrecipes.com/images/75131.jpg' },
