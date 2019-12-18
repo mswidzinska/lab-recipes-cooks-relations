@@ -44,11 +44,17 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.use(express.static(__dirname + '/public'));
 
 function protect(req, res, next) {
-    if (req.session.currentUser) next();
-    else next(createError(401, "Please log in to view this page"));
+    if (req.session.currentUser) {
+        next();
+    } else next(createError(401, "Please log in to view this page"));
 }
 
-
+app.use((req, res, next) => {
+    if (req.session.currentUser) {
+        res.locals.user = req.session.currentUser;
+    }
+    next()
+})
 app.get('/', (req, res, next) => {
     res.render('index');
 });

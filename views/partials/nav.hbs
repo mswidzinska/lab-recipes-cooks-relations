@@ -8,13 +8,20 @@
   <li class="nav-item">
     <a class="nav-link" href="/create">Create a recipe</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/signup">Sign up</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/login">Log in</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/logout">Log out</a>
-  </li>
+
+
+    {{#if user}}
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log out</a>
+        <a class="hallo">Hallo {{user.username}}!</a>
+      </li>
+     {{else}}
+     <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign up</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/login">Log in</a>
+      </li>
+    {{/if}}
+
 </ul>
