@@ -165,8 +165,9 @@ input {
 .error-message {
     background: #F02B63;
     box-sizing: border-box;
+    border-radius: 4px;
     color: #fff;
     margin: 20px auto;
     padding: 20px;
-    width: 100%;
+    width: 26.50%;
 }

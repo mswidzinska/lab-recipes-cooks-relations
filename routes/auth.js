@@ -13,16 +13,38 @@ app.post("/signup", (req, res, next) => {
     const password = req.body.password;
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+    if (username === "" || password === "") {
+        res.render("auth/signup", {
+            errorMessage: "Indicate a username and a password to sign up"
+        });
+        return;
+    }
+    User.findOne({ "username": username })
+        .then(user => {
+            if (user !== null) {
+                res.render("auth/signup", {
+                    errorMessage: "The username already exists!"
+                });
+                return;
+            }
 
-    User.create({
-            username,
-            password: hashPass
-        })
-        .then(() => {
-            res.redirect("/");
+            const salt = bcrypt.genSaltSync(bcryptSalt);
+            const hashPass = bcrypt.hashSync(password, salt);
+
+            User.create({
+                    username,
+                    password: hashPass
+                })
+                .then(() => {
+                    res.redirect("/");
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         })
         .catch(error => {
-            console.log(error);
+            next(error);
         })
+
 });
 module.exports = app;
