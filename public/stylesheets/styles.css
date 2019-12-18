@@ -27,7 +27,14 @@ body {
 
 h1 {
     font-size: 5em;
-    color: rgb(128, 0, 32);
+    color: #1F81C3;
+}
+
+h2 {
+    color: #1F81C3;
+    font-size: 4em;
+    margin: 20px 0;
+    padding: 0;
 }
 
 h3,
@@ -65,7 +72,7 @@ img {
 
 .read-more a {
     text-decoration: none;
-    color: rgb(175, 1, 1);
+    color: #1F81C3;
     font-size: 1.3em;
 }
 
@@ -170,4 +177,21 @@ input {
     margin: 20px auto;
     padding: 20px;
     width: 100%;
+}
+
+.error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.error-page img {
+    width: 40%;
+    box-shadow: none;
+    margin-top: 60px;
+}
+
+.red {
+    color: red
 }

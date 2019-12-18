@@ -7,14 +7,13 @@ const bcryptSalt = 10;
 
 
 //Sign up
-app.get("/signup", (req, res, next) => {
+app.get("/signup", (req, res) => {
     res.render("auth/signup");
 });
 app.post("/signup", (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
+
     if (username === "" || password === "") {
         res.render("auth/signup", {
             errorMessage: "Indicate a username and a password to sign up"
@@ -41,7 +40,7 @@ app.post("/signup", (req, res, next) => {
                     res.redirect("/");
                 })
                 .catch(error => {
-                    console.log(error);
+                    next(createError(500, "Sorry! Our database crashed. Please come back later."))
                 })
         })
         .catch(error => {

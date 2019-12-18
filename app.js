@@ -5,11 +5,12 @@ const mongoose = require("mongoose")
 const app = express();
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-// const plainPassword1 = "HelloWorld";
-// const plainPassword2 = "helloworld";
-// const salt = bcrypt.genSaltSync(saltRounds);
-// const hash1 = bcrypt.hashSync(plainPassword1, salt);
-// const hash2 = bcrypt.hashSync(plainPassword2, salt);
+const createError = require('http-errors')
+    // const plainPassword1 = "HelloWorld";
+    // const plainPassword2 = "helloworld";
+    // const salt = bcrypt.genSaltSync(saltRounds);
+    // const hash1 = bcrypt.hashSync(plainPassword1, salt);
+    // const hash2 = bcrypt.hashSync(plainPassword2, salt);
 
 // console.log("Hash 1 -", hash1);
 // console.log("Hash 2 -", hash2);
@@ -44,8 +45,9 @@ app.use(express.static(__dirname + '/public'));
 
 function protect(req, res, next) {
     if (req.session.currentUser) next();
-    else res.redirect("/login");
+    else next(createError(401, "Please log in to view this page"));
 }
+
 
 app.get('/', (req, res, next) => {
     res.render('index');
@@ -53,10 +55,18 @@ app.get('/', (req, res, next) => {
 app.use("/", require("./routes/list"));
 
 app.use("/", require("./routes/singleRecipe"));
-app.use("/recipes", protect, require("./routes/deleteRecipe"));
+app.use("/recipes/", protect, require("./routes/deleteRecipe"));
 app.use("/create", protect, require("./routes/createRecipe"));
 app.use("/edit", protect, require("./routes/editRecipe"));
 app.use("/", require('./routes/auth'));
+app.use("/", (req, res, next) => {
+    next(createError(404, "Page not found"))
+})
+app.use((err, req, res, next) => {
+    console.log(err)
+    res.render("error", err)
+})
+
 
 app.listen(3000, () => {
     console.log("Webserver is listening");
