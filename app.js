@@ -1,20 +1,20 @@
 const express = require("express");
 const hbs = require("hbs")
-const bodyParser = require('body-parser')
+var bodyParser = require('body-parser')
 const mongoose = require("mongoose")
 const app = express();
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+// const plainPassword1 = "HelloWorld";
+// const plainPassword2 = "helloworld";
+// const salt = bcrypt.genSaltSync(saltRounds);
+// const hash1 = bcrypt.hashSync(plainPassword1, salt);
+// const hash2 = bcrypt.hashSync(plainPassword2, salt);
 
-const plainPassword1 = "HelloWorld";
-const plainPassword2 = "helloworld";
+// console.log("Hash 1 -", hash1);
+// console.log("Hash 2 -", hash2);
 
-const salt = bcrypt.genSaltSync(saltRounds);
-const hash1 = bcrypt.hashSync(plainPassword1, salt);
-const hash2 = bcrypt.hashSync(plainPassword2, salt);
-
-console.log("Hash 1 -", hash1);
-console.log("Hash 2 -", hash2);
+// const MongoStore = require("connect-mongo")(session);
 
 
 let options = {
@@ -25,12 +25,27 @@ mongoose.connect("mongodb://localhost:27017/cookbook", options, (err, connection
     if (err) console.log(err);
     else console.log("connected to database")
 })
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
+
+
+
 app.set('view engine', 'hbs');
+var session = require('express-session')
+var sessionOptions = {
+    secret: 'keyboard cat',
+    cookie: {}
+}
+
+app.use(session(sessionOptions));
 app.set("views", __dirname + "/views");
 hbs.registerPartials(__dirname + "/views/partials");
 
 app.use(express.static(__dirname + '/public'));
+
+function protect(req, res, next) {
+    if (req.session.currentUser) next();
+    else res.redirect("/login");
+}
 
 app.get('/', (req, res, next) => {
     res.render('index');
@@ -38,11 +53,10 @@ app.get('/', (req, res, next) => {
 app.use("/", require("./routes/list"));
 
 app.use("/", require("./routes/singleRecipe"));
-app.use("/", require("./routes/deleteRecipe"));
-app.use("/", require("./routes/createRecipe"));
-app.use("/", require("./routes/editRecipe"));
+app.use("/recipes", protect, require("./routes/deleteRecipe"));
+app.use("/create", protect, require("./routes/createRecipe"));
+app.use("/edit", protect, require("./routes/editRecipe"));
 app.use("/", require('./routes/auth'));
-
 
 app.listen(3000, () => {
     console.log("Webserver is listening");

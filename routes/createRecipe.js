@@ -5,7 +5,7 @@ const Creator = require("../models/cook")
 const mongoose = require("mongoose");
 
 
-app.get("/create", (req, res) => {
+app.get("/", (req, res) => {
     Creator.find({})
         .then((creators) => {
             res.render("recipes/recipeCreate.hbs", { creators })
@@ -14,7 +14,7 @@ app.get("/create", (req, res) => {
 })
 
 
-app.post("/create", (req, res) => {
+app.post("/", (req, res) => {
     let newRecipe = {
         title: req.body.title,
         level: req.body.level,

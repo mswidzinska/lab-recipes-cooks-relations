@@ -5,7 +5,7 @@ const Creator = require("../models/cook")
 const mongoose = require("mongoose")
 
 
-app.get("/edit/:id", (req, res) => {
+app.get("/:id", (req, res) => {
     Recipe.find({ _id: req.params.id })
         .then((result) => {
             Creator.find({})
@@ -18,7 +18,7 @@ app.get("/edit/:id", (req, res) => {
 })
 
 
-app.post("/edit", (req, res) => {
+app.post("/", (req, res) => {
     let recipeId = req.body.id
     let updatedRecipe = {
         title: req.body.title,
