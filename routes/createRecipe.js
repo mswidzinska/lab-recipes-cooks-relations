@@ -15,7 +15,9 @@ app.get("/", (req, res) => {
 
 
 app.post("/", (req, res) => {
+
     let newRecipe = {
+
         title: req.body.title,
         level: req.body.level,
         ingredients: [req.body.ingredients],
@@ -26,7 +28,6 @@ app.post("/", (req, res) => {
         creator: mongoose.Types.ObjectId(req.body.creator),
         created: req.body.created
     }
-
     Recipe.create(newRecipe)
         .then(() => {
             res.redirect('/')
